@@ -10,6 +10,9 @@ using static System.Net.Mime.MediaTypeNames;
 //for now use guest / guest for user and pass.
 //click on the docker container to test.
 
+// don't forget to set the startup projects to multiple projects and select both the sender and receivers.
+
+
 ConnectionFactory factory = new();
 
 // Create a connection to RabbitMQ, we shouldn't be putting this in the code - add this to secrets.  But this is just a demo, so relax. ;-)
