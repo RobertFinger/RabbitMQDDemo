@@ -27,6 +27,9 @@ channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
 var consumer = new EventingBasicConsumer(channel);
 consumer.Received += (model, ea) =>
 {
+    //zomg, this server is twice as slow as the other one.  It takes 10 seconds to process a message!!!
+
+    Task.Delay(TimeSpan.FromSeconds(10)).Wait();
     var body = ea.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);
     Console.WriteLine($"Received message: {message}");

@@ -30,9 +30,14 @@ channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDel
 channel.QueueBind(queue: queueName, exchange: exchangeName, routingKey: routingKey, arguments: null);
 
 
-//ok, lets now send a message:
-byte[] messageBodyBytes = Encoding.UTF8.GetBytes("Who's the mother flipper?  I'm the mother flipper!");
-channel.BasicPublish(exchange: exchangeName, routingKey: routingKey, basicProperties: null, body: messageBodyBytes);
-channel.Close();
-connection.Close();
+//ok, lets now send the messages:
 
+for (int count = 0; count < 100; count++)
+{
+    byte[] messageBodyBytes = Encoding.UTF8.GetBytes($"Who's the mother flipper?  I'm the mother flipper!  How many messages?  {count}");
+    channel.BasicPublish(exchange: exchangeName, routingKey: routingKey, basicProperties: null, body: messageBodyBytes);
+
+}
+
+    channel.Close();
+    connection.Close();

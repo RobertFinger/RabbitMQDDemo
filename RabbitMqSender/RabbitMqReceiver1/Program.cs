@@ -25,8 +25,13 @@ channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
 
 var consumer = new EventingBasicConsumer(channel);
 
+Console.WriteLine($"Getting Messages:");
+
 consumer.Received += (model, ea) =>
 {
+    //simulate work getting done.
+    
+    Task.Delay(TimeSpan.FromSeconds(5)).Wait();
     var body = ea.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);
     Console.WriteLine($"Received message: {message}");
