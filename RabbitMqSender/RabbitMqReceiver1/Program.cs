@@ -6,6 +6,9 @@ ConnectionFactory factory = new();
 
 // Create a connection to RabbitMQ, we shouldn't be putting this in the code - add this to secrets.  But this is just a demo, so relax. ;-)
 
+// Yes, we can run 2 instances of receiver 1.  But this is as rabbitmq demo, not a docker demo. 
+
+
 factory.Uri = new Uri("amqp://guest:guest@localhost:5672");
 factory.ClientProvidedName = "Rabbit Mambo #5 receiver 1";
 

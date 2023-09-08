@@ -29,6 +29,8 @@ consumer.Received += (model, ea) =>
 {
     //zomg, this server is twice as slow as the other one.  It takes 10 seconds to process a message!!!
 
+    // Yes, we can run 2 instances of receiver 1.  But this is as rabbitmq demo, not a docker demo. 
+
     Task.Delay(TimeSpan.FromSeconds(10)).Wait();
     var body = ea.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);
